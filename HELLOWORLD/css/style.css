@@ -1,0 +1,32 @@
+.header{
+    color: red;
+}
+.para{
+    color: navy;
+    background-color: yellowgreen;
+    font-size: x-large;
+    font-style: italic;
+    font-family: 'Times New Roman', Times, serif;
+}
+.border-red{
+    border: 10px;
+}
+.content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+a.link{
+    color: red;
+
+}
+a.visited{
+    color: green;
+
+}
+a.hover{
+    color: blue;
+}
+a.active{
+    color: violet;
+}

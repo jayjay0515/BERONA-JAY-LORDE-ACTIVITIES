@@ -1,0 +1,37 @@
+body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        #tv {
+            width: 200px;
+            height: 40px;
+            background-color: #000;
+            color: #00ff00;
+            font-size: 20px;
+            text-align: right;
+            padding: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #333;
+        }
+        button {
+            width: 50px;
+            height: 50px;
+            font-size: 18px;
+            margin: 2px;
+            background-color: #e0e0e0;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #d0d0d0;
+        }
+        .operator {
+            background-color: #ff9500;
+            color: white;
+        }
+    
