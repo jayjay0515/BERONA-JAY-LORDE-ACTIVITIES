@@ -1,0 +1,182 @@
+:root{
+	--bg-1: #0f1724; /* deep navy */
+	--bg-2: #15152a; /* warm indigo */
+	--aurora-1: #6ee7b7; /* mint */
+	--aurora-2: #7c3aed; /* violet */
+	--aurora-3: #2dd4bf; /* teal */
+	--glass: rgba(255,255,255,0.06);
+	--muted: rgba(255,255,255,0.7);
+	--btn-text: #06121a;
+}
+
+/* Page background: subtle aurora gradient with moving bands */
+html,body{
+	height:100%;
+	margin:0;
+	font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+	background: radial-gradient(ellipse at 10% 20%, rgba(124,58,237,0.09), transparent 15%),
+							radial-gradient(ellipse at 90% 80%, rgba(45,212,191,0.06), transparent 18%),
+							linear-gradient(180deg,var(--bg-1),var(--bg-2));
+	color: #e6eef6;
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale;
+}
+
+.wrap{
+	min-height:100vh;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	padding:4rem 1.25rem;
+}
+
+.card{
+	width:100%;
+	max-width:880px;
+	padding:2.25rem;
+	background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+	border-radius:18px;
+	box-shadow: 0 10px 40px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+	border:1px solid rgba(255,255,255,0.04);
+	backdrop-filter: blur(8px) saturate(120%);
+}
+
+/* Heading with gradient clip + shimmer */
+.hero-title{
+	font-size:2.25rem;
+	line-height:1.05;
+	margin:0 0 0.5rem 0;
+	font-weight:700;
+	background: linear-gradient(90deg,var(--aurora-1),var(--aurora-2),var(--aurora-3));
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+	position:relative;
+	display:inline-block;
+	transform: translateZ(0);
+}
+
+.hero-title::after{
+	content:"";
+	position:absolute;
+	left:-30%;
+	top:0;
+	height:100%;
+	width:40%;
+	transform:skewX(-25deg);
+	background: linear-gradient(90deg, rgba(255,255,255,0.18), rgba(255,255,255,0.02));
+	mix-blend-mode: overlay;
+	animation: shimmer 2.6s linear infinite;
+	pointer-events:none;
+}
+
+@keyframes shimmer{
+	0%{ left:-40%; opacity:0 }
+	10%{ opacity:1 }
+	50%{ left:110%; opacity:0.95 }
+	100%{ left:110%; opacity:0 }
+}
+
+.lead{
+	margin:0.25rem 0 1.25rem 0;
+	color:var(--muted);
+	font-size:1rem;
+	max-width:56ch;
+	opacity:0.98;
+	animation: floatIn 0.9s cubic-bezier(.2,.9,.3,1) both;
+}
+
+@keyframes floatIn{
+	from{ transform: translateY(8px); opacity:0 }
+	to{ transform: translateY(0); opacity:1 }
+}
+
+/* Primary button designed like senior CSS designer */
+.btn-primary{
+	--size: 56px;
+	display:inline-flex;
+	align-items:center;
+	justify-content:center;
+	gap:12px;
+	padding:0 1.25rem;
+	height:var(--size);
+	border-radius:999px;
+	cursor:pointer;
+	position:relative;
+	border: none;
+	font-weight:700;
+	color:var(--btn-text);
+	background: linear-gradient(90deg, rgba(255,255,255,0.96), rgba(255,255,255,0.92));
+	box-shadow: 0 8px 24px rgba(124,58,237,0.16), 0 2px 6px rgba(2,6,23,0.6), inset 0 -6px 18px rgba(0,0,0,0.12);
+	transform: translateZ(0);
+	transition: transform 320ms cubic-bezier(.2,.9,.3,1), box-shadow 320ms ease, filter 320ms ease;
+	overflow:visible;
+}
+
+.btn-primary .icon{
+	width:28px; height:28px; display:inline-grid; place-items:center; border-radius:8px;
+	background: linear-gradient(180deg,var(--aurora-2),var(--aurora-3));
+	color:white; box-shadow: 0 6px 14px rgba(44,197,179,0.18);
+}
+
+.btn-primary::before{
+	content:"";
+	position:absolute;
+	left:-8px; right:-8px; top:-8px; bottom:-8px;
+	border-radius:20px;
+	background: linear-gradient(120deg, rgba(124,58,237,0.12), rgba(45,212,191,0.08));
+	filter: blur(18px);
+	opacity:0;
+	transition: opacity 320ms ease, transform 420ms cubic-bezier(.2,.9,.3,1);
+	z-index:-1;
+}
+
+.btn-primary:hover{
+	transform: translateY(-5px) scale(1.01);
+	box-shadow: 0 18px 48px rgba(124,58,237,0.20), 0 6px 18px rgba(2,6,23,0.7);
+}
+
+.btn-primary:hover::before{ opacity:1; transform: translateY(-6px); }
+
+.btn-primary .label{
+	display:inline-block;
+	position:relative;
+	overflow:hidden;
+}
+
+.btn-primary .label span{
+	display:inline-block;
+	transition: transform 420ms cubic-bezier(.2,.9,.3,1), letter-spacing 320ms ease;
+}
+
+.btn-primary:hover .label span{ transform: translateY(-2px); letter-spacing:0.6px; }
+
+/* Small neon pulse on focus/active */
+.btn-primary:active{ transform: translateY(-2px) scale(.997); }
+.btn-primary:focus{ outline: none; box-shadow: 0 0 0 4px rgba(124,58,237,0.12); }
+
+/* Accentcta variant with aurora gradient background */
+.btn-aurora{
+	color:white; background: linear-gradient(90deg,var(--aurora-2),var(--aurora-3));
+	box-shadow: 0 10px 40px rgba(124,58,237,0.18), inset 0 -6px 12px rgba(0,0,0,0.18);
+}
+
+/* Subtle floating animation for decorative elements */
+.floaty{ animation: floaty 6s ease-in-out infinite; }
+@keyframes floaty{ 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-8px) } }
+
+/* Small utility */
+.muted{ color:var(--muted); font-size:0.92rem }
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce){
+	.hero-title::after, .btn-primary, .lead, .floaty{ animation: none; transition: none }
+}
+
+/* Responsive tweaks */
+@media (max-width:640px){
+	.hero-title{ font-size:1.6rem }
+	.card{ padding:1.25rem }
+	.btn-primary{ --size:48px }
+}
+

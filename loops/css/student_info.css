@@ -1,0 +1,128 @@
+/* ---------- COLOR PALETTE ---------- */
+:root {
+  --light: #e6e6e6;
+  --blue-gray: #7f8fa6;
+  --deep-blue: #4a5d73;
+  --teal: #0f3d3e;
+  --dark: #1a1a1a;
+  --white: #ffffff;
+}
+
+/* ---------- GLOBAL STYLE ---------- */
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, var(--blue-gray), var(--deep-blue));
+  color: var(--white);
+  text-align: center;
+  padding: 30px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+h2 {
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+/* ---------- SEARCH BAR ---------- */
+#student-form input {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background: var(--light);
+  transition: 0.3s;
+}
+
+#student-form input:focus {
+  transform: scale(1.05);
+  box-shadow: 0 0 8px var(--teal);
+}
+
+/* ---------- BUTTONS ---------- */
+button {
+  padding: 10px 16px;
+  margin: 8px;
+  border: none;
+  border-radius: 8px;
+  background: var(--teal);
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+button:hover {
+  background: var(--deep-blue);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Click effect */
+button:active {
+  transform: scale(0.95);
+}
+
+/* ---------- TABLE ---------- */
+table {
+  width: 80%;
+  margin: 25px auto;
+  border-collapse: collapse;
+  background: var(--dark);
+  border-radius: 10px;
+  overflow: hidden;
+  animation: slideUp 0.6s ease;
+}
+
+th {
+  background: var(--teal);
+  padding: 12px;
+}
+
+td {
+  padding: 10px;
+  background: #2b2b2b;
+  transition: 0.3s;
+}
+
+/* Row hover animation */
+tr:hover td {
+  background: var(--blue-gray);
+  transform: scale(1.01);
+}
+
+/* ---------- PASS / FAIL COLORS ---------- */
+td:last-child {
+  font-weight: bold;
+}
+
+td:last-child:contains("Passed") {
+  color: #4cff7a;
+}
+
+td:last-child:contains("Failed") {
+  color: #ff5c5c;
+}
+
+/* ---------- ANIMATIONS ---------- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
