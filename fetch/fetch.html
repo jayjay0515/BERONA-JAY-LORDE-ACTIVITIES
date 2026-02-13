@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login and Students</title>
+    <script src="./js/fetch.js" defer></script>
+    <link rel="stylesheet" href="./css/fetch.css">
+
+</head>
+<body>
+
+<div id="loginBox">
+    <h1>LOGIN</h1>
+    <div id="error" style="color:red;"></div>
+
+    <input type="text" id="username" placeholder="username"><br>
+    <input type="password" id="password" placeholder="password"><br>
+
+    <button onclick="login()">LOGIN</button>
+</div>
+
+<hr>
+
+<!-- Table (hidden at first) -->
+<div id="tableSection" style="display:none;">
+    <h1>Student List</h1>
+
+    <table border="1" id="studentTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Student ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Course</th>
+                <th>Year</th>
+                <th>Enrollment Date</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+</body>
+</html>
