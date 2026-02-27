@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories - Inventory Management System</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootsrap/css/bootstrap.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- SIDEBAR -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                📦 INVENTORY SYSTEM
+            </div>
+            <ul class="sidebar-nav">
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link">
+                        <i class="bi">📊</i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="items.html" class="nav-link">
+                        <i class="bi">📦</i> Items
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="categories.html" class="nav-link active">
+                        <i class="bi">🏷️</i> Categories
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="units.html" class="nav-link">
+                        <i class="bi">⚖️</i> Units
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- NAVBAR -->
+        <div class="navbar-top">
+            <div class="navbar-brand-text">Categories</div>
+            <div class="navbar-right">
+                <div class="navbar-user">
+                    <div class="avatar">JB</div>
+                    <span>Admin User</span>
+                </div>
+                <button class="logout-btn" onclick="handleLogout()">Logout</button>
+            </div>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+            <div class="page-header">
+                <h1 class="page-title">Categories Management</h1>
+                <p class="page-subtitle">Organize your inventory with categories.</p>
+            </div>
+
+            <!-- ACTION BAR -->
+            <div class="content-header">
+                <div class="search-box">
+                    <input type="text" class="form-control" id="searchCategories" onkeyup="searchTable('searchCategories', 1)" placeholder="Search categories...">
+                </div>
+                <div class="action-buttons">
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCategoryModal">
+                        ➕ Add Category
+                    </button>
+                </div>
+            </div>
+
+            <!-- CATEGORIES TABLE -->
+            <div class="table-container">
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Category Name</th>
+                            <th>Description</th>
+                            <th>Items Count</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#001</td>
+                            <td>Electronics</td>
+                            <td>Computing and electronic devices</td>
+                            <td><span class="badge bg-info">156</span></td>
+                            <td>
+                                <button class="btn btn-edit btn-action">✏️ Edit</button>
+                                <button class="btn btn-delete btn-action">🗑️ Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#002</td>
+                            <td>Office Supplies</td>
+                            <td>Papers, pens, and office materials</td>
+                            <td><span class="badge bg-info">89</span></td>
+                            <td>
+                                <button class="btn btn-edit btn-action">✏️ Edit</button>
+                                <button class="btn btn-delete btn-action">🗑️ Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#003</td>
+                            <td>Accessories</td>
+                            <td>Cables, adapters, and add-ons</td>
+                            <td><span class="badge bg-info">234</span></td>
+                            <td>
+                                <button class="btn btn-edit btn-action">✏️ Edit</button>
+                                <button class="btn btn-delete btn-action">🗑️ Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#004</td>
+                            <td>Furniture</td>
+                            <td>Desks, chairs, and storage</td>
+                            <td><span class="badge bg-info">45</span></td>
+                            <td>
+                                <button class="btn btn-edit btn-action">✏️ Edit</button>
+                                <button class="btn btn-delete btn-action">🗑️ Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#005</td>
+                            <td>Networking</td>
+                            <td>Routers, cables, and network equipment</td>
+                            <td><span class="badge bg-info">67</span></td>
+                            <td>
+                                <button class="btn btn-edit btn-action">✏️ Edit</button>
+                                <button class="btn btn-delete btn-action">🗑️ Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#006</td>
+                            <td>Software Licenses</td>
+                            <td>Operating systems and applications</td>
+                            <td><span class="badge bg-info">23</span></td>
+                            <td>
+                                <button class="btn btn-edit btn-action">✏️ Edit</button>
+                                <button class="btn btn-delete btn-action">🗑️ Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADD/EDIT CATEGORY MODAL -->
+    <div class="modal fade" id="addCategoryModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Category</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="categoryForm">
+                        <div class="form-group">
+                            <label class="form-label" for="categoryName">Category Name</label>
+                            <input type="text" class="form-control" id="categoryName" placeholder="Enter category name" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="categoryDescription">Description</label>
+                            <textarea class="form-control" id="categoryDescription" rows="4" placeholder="Enter category description"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="saveCategory()">Save Category</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="bootsrap/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        function handleLogout() {
+            if (confirm('Are you sure you want to logout?')) {
+                window.location.href = 'login.html';
+            }
+        }
+
+        function saveCategory() {
+            const form = document.getElementById('categoryForm');
+            if (form.checkValidity()) {
+                alert('Category saved successfully!');
+                const modal = bootstrap.Modal.getInstance(document.getElementById('addCategoryModal'));
+                modal.hide();
+                form.reset();
+            } else {
+                alert('Please fill in all required fields.');
+            }
+        }
+
+        function searchTable(inputId, columnIndex) {
+            const input = document.getElementById(inputId);
+            const filter = input.value.toUpperCase();
+            const table = document.querySelector('.table');
+            const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+            
+            for (let i = 0; i < rows.length; i++) {
+                const cells = rows[i].getElementsByTagName('td');
+                let found = false;
+                
+                // Search in name/category name column
+                if (cells[1]) {
+                    const text = cells[1].textContent || cells[1].innerText;
+                    if (text.toUpperCase().indexOf(filter) > -1) {
+                        found = true;
+                    }
+                }
+                
+                rows[i].style.display = found ? '' : 'none';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop();
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

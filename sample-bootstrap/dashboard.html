@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Inventory Management System</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootsrap/css/bootstrap.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- SIDEBAR -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                📦 INVENTORY SYSTEM
+            </div>
+            <ul class="sidebar-nav">
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link active">
+                        <i class="bi">📊</i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="items.html" class="nav-link">
+                        <i class="bi">📦</i> Items
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="categories.html" class="nav-link">
+                        <i class="bi">🏷️</i> Categories
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="units.html" class="nav-link">
+                        <i class="bi">⚖️</i> Units
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- NAVBAR -->
+        <div class="navbar-top">
+            <div class="navbar-brand-text">Dashboard</div>
+            <div class="navbar-right">
+                <div class="navbar-user">
+                    <div class="avatar">JB</div>
+                    <span>Admin User</span>
+                </div>
+                <button class="logout-btn" onclick="handleLogout()">Logout</button>
+            </div>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+            <div class="page-header">
+                <h1 class="page-title">Dashboard</h1>
+                <p class="page-subtitle">Welcome back! Here's your inventory overview.</p>
+            </div>
+
+            <!-- STAT CARDS -->
+            <div class="row mb-30">
+                <div class="col-md-4 col-sm-6 mb-20">
+                    <div class="stat-card">
+                        <div class="stat-icon">📦</div>
+                        <div class="stat-value">1,250</div>
+                        <div class="stat-label">Total Items</div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-20">
+                    <div class="stat-card low-stock">
+                        <div class="stat-icon">⚠️</div>
+                        <div class="stat-value">45</div>
+                        <div class="stat-label">Low Stocks</div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-20">
+                    <div class="stat-card out-of-stock">
+                        <div class="stat-icon">❌</div>
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Out of Stock</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RECENT ACTIVITY TABLE -->
+            <div class="table-container">
+                <div style="padding: 20px; border-bottom: 1px solid #e9ecef;">
+                    <h5 style="color: #0d1b2a; font-weight: 600;">Recent Activity</h5>
+                </div>
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Activity</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#001</td>
+                            <td>Added new item: Laptop Dell XPS</td>
+                            <td>2024-02-24 10:30 AM</td>
+                            <td><span class="badge bg-success">Completed</span></td>
+                        </tr>
+                        <tr>
+                            <td>#002</td>
+                            <td>Updated stock: Mouse Wireless (50 units)</td>
+                            <td>2024-02-24 09:15 AM</td>
+                            <td><span class="badge bg-success">Completed</span></td>
+                        </tr>
+                        <tr>
+                            <td>#003</td>
+                            <td>Category created: Electronics</td>
+                            <td>2024-02-23 02:45 PM</td>
+                            <td><span class="badge bg-success">Completed</span></td>
+                        </tr>
+                        <tr>
+                            <td>#004</td>
+                            <td>Low stock alert: USB Cable (10 left)</td>
+                            <td>2024-02-23 11:20 AM</td>
+                            <td><span class="badge bg-warning">Alert</span></td>
+                        </tr>
+                        <tr>
+                            <td>#005</td>
+                            <td>Item deleted: Old Monitor (Out of stock)</td>
+                            <td>2024-02-22 03:30 PM</td>
+                            <td><span class="badge bg-danger">Deleted</span></td>
+                        </tr>
+                        <tr>
+                            <td>#006</td>
+                            <td>Bulk import: 200 items from spreadsheet</td>
+                            <td>2024-02-22 10:00 AM</td>
+                            <td><span class="badge bg-info">Imported</span></td>
+                        </tr>
+                        <tr>
+                            <td>#007</td>
+                            <td>Stock adjusted: Keyboard (25 units added)</td>
+                            <td>2024-02-21 04:15 PM</td>
+                            <td><span class="badge bg-success">Completed</span></td>
+                        </tr>
+                        <tr>
+                            <td>#008</td>
+                            <td>New unit created: Pieces (pcs)</td>
+                            <td>2024-02-21 01:00 PM</td>
+                            <td><span class="badge bg-success">Completed</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="bootsrap/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        function handleLogout() {
+            if (confirm('Are you sure you want to logout?')) {
+                window.location.href = 'login.html';
+            }
+        }
+
+        // Set active nav link
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop();
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
